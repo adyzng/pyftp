@@ -1,6 +1,8 @@
 # pyftp
 High level ftp client wrapper based on python ftplib.
 
+Based on Python 2.7.
+
 # class
 ```Python
 class StatResult(tuple)
@@ -105,5 +107,5 @@ PyFTP methods defined here:
 
 - **stat(self, pathname)**
 
-	Retrieve limit file stat from ftp server
+	Retrieve limit file stat from ftp server.
 	**IMPORTANT**: folder not supported

@@ -1,0 +1,6 @@
+# python build folder
+build/
+dist/
+
+# python complied files
+*.pyc

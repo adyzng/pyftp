@@ -582,7 +582,20 @@ class PyFTP(object):
             
         if not self.exists(remotepath):
             raise IOError('Remote path {0} not exist.'.format(remotepath))
-
+        
+        dcnt, fcnt = 0, 0
+        with self.lcd(localpath), self.cd(remotepath):
+            for root, dirs, files in os.walk('.'):
+                rpath = root.replace('\\', '/')
+                for fd in files:
+                    self.put(os.path.join(root, fd), rpath + '/' + fd, preserve_mtime=preserve_mtime)
+                    fcnt += 1
+                for fd in dirs:
+                    self.mkdir(rpath + '/' +fd)
+                    dcnt += 1
+        
+        return (dcnt, fcnt)
+        '''
         def inner_put(localdir, remotedir):
             with self.lcd(localdir), self.cd(remotedir):
                 dcnt, fcnt = 0, 0
@@ -597,5 +610,5 @@ class PyFTP(object):
                         rs = inner_put(entry, entry)
                         dcnt, fcnt = rs[0] + dcnt, rs[1] + fcnt
                 return (dcnt, fcnt)
-
         return inner_put(localpath, remotepath)
+        '''
