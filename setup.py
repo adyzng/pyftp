@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from distutils.core import setup
+from setuptools import setup
 
 
 def get_version(relpath):
@@ -18,7 +17,7 @@ def get_version(relpath):
 setup(
 	name = 'pyftp',
 	version = get_version('pyftp.py'),
-	author = 'huan.zhang',
+	author = 'Azlan',
 	author_email = 'adyzng@gmail.com',
 
 	py_modules = ['pyftp'],
@@ -26,10 +25,11 @@ setup(
 	
 	keywords = 'pyftp, python ftp',
 	description = 'High level ftp client wrapper based on python ftplib',
-
-	license="Public Domain",
+    platforms = 'any',
+	license='BSD',
 	classifiers=[
         'Environment :: Console',
+        'Environment :: Web Environment',
         'License :: Public Domain',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2',

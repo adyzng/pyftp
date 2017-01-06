@@ -4,3 +4,4 @@ dist/
 
 # python complied files
 *.pyc
+.pypirc

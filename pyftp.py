@@ -4,6 +4,10 @@
 pyftp - high-level FTP client library
 
 """
+
+__version__ = "0.1.0"
+__all__ = ['StatResult', 'PyFTP']
+
 import os
 import stat
 
