@@ -5,7 +5,7 @@ pyftp - high-level FTP client library
 
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __all__ = ['StatResult', 'PyFTP']
 
 import os
@@ -197,7 +197,7 @@ class PyFTP(object):
             # 550 SIZE not allowed in ASCII mode
             self.ftp.voidcmd('TYPE I')
             return self.ftp.size(filename)
-        except (Exception) as e:
+        except Exception as e:
             raise Exception(e.message)
 
 
@@ -211,7 +211,10 @@ class PyFTP(object):
             with self.cd(pathname):
                 return False
         except error_perm as e:
-            return True
+            if self.get_mtime(pathname):
+                return True
+            else:
+                return False
 
     def isdir(self, pathname):
         '''check is directory or not'''
